@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Task Manager</title>
+</head>
+<body>
+    {% load socialaccount %} <!-- Load the necessary template tags -->
+    
+    {% if user.is_authenticated %}
+        <!-- Display logout link if the user is logged in -->
+        <a href="{% url 'account_logout' %}">Logout</a>
+    {% else %}
+        <!-- Display Google login button if the user is not logged in -->
+        <a href="{% provider_login_url 'google' %}">Login with Google</a>
+    {% endif %}
+
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
